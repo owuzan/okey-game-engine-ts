@@ -1,0 +1,89 @@
+{
+  "name": "okey-game-engine-ts",
+  "version": "0.1.0",
+  "description": "Rules engine for Turkish Okey and Okey 101: deterministic game state, all common variants, rack arrangement helpers and solvers.",
+  "keywords": [
+    "okey",
+    "okey101",
+    "okey-101",
+    "101-okey",
+    "rummy",
+    "tile-game",
+    "game-engine",
+    "rules-engine",
+    "typescript"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./classic": {
+      "import": {
+        "types": "./dist/classic.d.ts",
+        "default": "./dist/classic.js"
+      },
+      "require": {
+        "types": "./dist/classic.d.cts",
+        "default": "./dist/classic.cjs"
+      }
+    },
+    "./okey101": {
+      "import": {
+        "types": "./dist/okey101.d.ts",
+        "default": "./dist/okey101.js"
+      },
+      "require": {
+        "types": "./dist/okey101.d.cts",
+        "default": "./dist/okey101.cjs"
+      }
+    },
+    "./helpers": {
+      "import": {
+        "types": "./dist/helpers.d.ts",
+        "default": "./dist/helpers.js"
+      },
+      "require": {
+        "types": "./dist/helpers.d.cts",
+        "default": "./dist/helpers.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "prepublishOnly": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "fast-check": "^4.10.2",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0"
+  }
+}
